@@ -1,0 +1,27 @@
+import re
+
+def simple_chatbot(user_input):
+    # Greetings
+    greetings = ["hello", "hi", "hey", "greetings", "howdy"]
+    for greeting in greetings:
+        if re.search(greeting, user_input, re.IGNORECASE):
+            return "Hello! How can I help you today?"
+
+    # Weather-related questions
+    weather_patterns = ["weather", "temperature", "forecast"]
+    for pattern in weather_patterns:
+        if re.search(pattern, user_input, re.IGNORECASE):
+            return "I'm sorry, I don't have the weather information right now."
+
+    # Default response
+    return "I'm sorry, I didn't understand that. Can you please rephrase?"
+
+# Main loop
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'exit':
+        print("Goodbye!")
+        break
+
+    response = simple_chatbot(user_input)
+    print("Bot:", response)
